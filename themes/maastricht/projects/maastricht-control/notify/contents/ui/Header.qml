@@ -22,13 +22,23 @@ Item {
         outerRadius: 3.5 * Maastricht.u
         innerRadius: 1.4 * Maastricht.u
     }
+    TextMetrics {
+        id: titleMetrics
+        font.family: Maastricht.font
+        font.italic: Maastricht.italic
+        font.weight: Font.DemiBold
+        font.pixelSize: 3.4 * Maastricht.u
+        text: h.title.toUpperCase()
+    }
     Row {
         x: elbow.width + 0.5 * Maastricht.u
         width: parent.width - x
         spacing: 0.5 * Maastricht.u
-        Rectangle { width: parent.width - titleText.width - 6 * Maastricht.u; height: 2.6 * Maastricht.u; color: Maastricht.violet }
+        Rectangle { width: Math.max(Maastricht.u, parent.width - titleText.width - 6 * Maastricht.u); height: 2.6 * Maastricht.u; color: Maastricht.violet }
         LText {
             id: titleText
+            // never wider than the space next to the elbow (it shrinks to fit instead)
+            width: Math.min(Math.ceil(titleMetrics.advanceWidth) + 2, parent.width - 7 * Maastricht.u)
             height: 2.6 * Maastricht.u
             verticalAlignment: Text.AlignVCenter
             text: h.title

@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
 import org.kde.notificationmanager as NotificationManager
@@ -191,6 +192,9 @@ PlasmoidItem {
 
         implicitWidth: vertical ? thickness : pill.width + 2
         implicitHeight: vertical ? pill.height + 2 : thickness
+        Layout.minimumWidth: vertical ? -1 : implicitWidth
+        Layout.preferredWidth: vertical ? -1 : implicitWidth
+        Layout.minimumHeight: vertical ? implicitHeight : -1
         hoverEnabled: true
         onClicked: root.expanded = !root.expanded
 

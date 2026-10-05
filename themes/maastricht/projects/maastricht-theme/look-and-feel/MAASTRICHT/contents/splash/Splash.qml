@@ -15,8 +15,8 @@ Rectangle {
 
     color: "#0E1418"
 
-    FontLoader { id: themeFont; source: "fonts/JosefinSans-Variable.ttf" }
-    readonly property string font: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Josefin Sans"
+    FontLoader { id: themeFont; source: "fonts/FjallaOne-Regular.ttf" }
+    readonly property string font: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Fjalla One"
 
     component LText: Text {
         font.family: root.font

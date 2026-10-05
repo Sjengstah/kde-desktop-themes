@@ -52,8 +52,9 @@ Item {
         }
         LText {
             x: titleText.x
-            anchors.top: titleText.bottom
-            anchors.topMargin: 0.4 * Maastricht.u
+            // pinned to the bottom, so tall fonts don't push it out of the tile
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0.8 * Maastricht.u
             width: titleText.width
             text: tile.subtitle
             color: tile.active ? Maastricht.dim(Maastricht.ink(tile.accent), 0.75) : Maastricht.tan

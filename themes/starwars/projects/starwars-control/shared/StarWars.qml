@@ -26,8 +26,8 @@ QtObject {
     // Base unit: half a KDE grid unit, so everything follows the system font size.
     readonly property real u: Kirigami.Units.gridUnit * 0.5
 
-    readonly property FontLoader fontLoader: FontLoader { source: Qt.resolvedUrl("fonts/Orbitron-Variable.ttf") }
-    readonly property string font: fontLoader.status === FontLoader.Ready ? fontLoader.font.family : "Orbitron"
+    readonly property FontLoader fontLoader: FontLoader { source: Qt.resolvedUrl("fonts/ShareTech-Regular.ttf") }
+    readonly property string font: fontLoader.status === FontLoader.Ready ? fontLoader.font.family : "Share Tech"
 
     function dim(c, a) {
         return Qt.rgba(c.r, c.g, c.b, a === undefined ? 0.18 : a)

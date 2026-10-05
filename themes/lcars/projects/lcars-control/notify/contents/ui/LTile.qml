@@ -52,8 +52,9 @@ Item {
         }
         LText {
             x: titleText.x
-            anchors.top: titleText.bottom
-            anchors.topMargin: 0.4 * Lcars.u
+            // pinned to the bottom, so tall fonts don't push it out of the tile
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0.8 * Lcars.u
             width: titleText.width
             text: tile.subtitle
             color: tile.active ? Qt.rgba(0, 0, 0, 0.7) : Lcars.tan

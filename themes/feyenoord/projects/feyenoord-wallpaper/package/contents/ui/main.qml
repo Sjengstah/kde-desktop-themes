@@ -323,6 +323,10 @@ WallpaperItem {
                 Label {
                     anchors { right: parent.right; bottom: parent.bottom; rightMargin: 0.6 * root.u; bottomMargin: 0.5 * root.u }
                     size: 1.5 * root.u
+                    width: parent.width - 1.2 * root.u
+                    horizontalAlignment: Text.AlignRight
+                    fontSizeMode: Text.HorizontalFit
+                    minimumPixelSize: 0.8 * root.u
                     text: root.sideNames[sector.index]
                     color: root.alpha(root.ink(sector.c), 0.9)
                 }

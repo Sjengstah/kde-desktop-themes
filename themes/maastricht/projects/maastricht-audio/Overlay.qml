@@ -55,8 +55,8 @@ Window {
     readonly property bool round: true
     readonly property string corner: "round"
 
-    FontLoader { id: themeFont; source: "fonts/JosefinSans-Variable.ttf" }
-    readonly property string fontFamily: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Josefin Sans"
+    FontLoader { id: themeFont; source: "fonts/FjallaOne-Regular.ttf" }
+    readonly property string fontFamily: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Fjalla One"
 
     // Placement: centred horizontally, just below the top panel.
     readonly property int topPanelHeight: 34

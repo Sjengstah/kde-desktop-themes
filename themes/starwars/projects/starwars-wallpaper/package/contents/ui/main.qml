@@ -39,8 +39,8 @@ WallpaperItem {
                   blue: blue, red: red, green: green, navy: navy0, panel: navy1, panel2: navy2 })[name] || accent
     }
 
-    FontLoader { id: themeFont; source: Qt.resolvedUrl("../fonts/Orbitron-Variable.ttf") }
-    readonly property string font: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Orbitron"
+    FontLoader { id: themeFont; source: Qt.resolvedUrl("../fonts/ShareTech-Regular.ttf") }
+    readonly property string font: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Share Tech"
 
     property date now: new Date()
     Timer {
@@ -323,6 +323,10 @@ WallpaperItem {
                 Label {
                     anchors { right: parent.right; bottom: parent.bottom; rightMargin: 0.6 * root.u; bottomMargin: 0.5 * root.u }
                     size: 1.5 * root.u
+                    width: parent.width - 1.2 * root.u
+                    horizontalAlignment: Text.AlignRight
+                    fontSizeMode: Text.HorizontalFit
+                    minimumPixelSize: 0.8 * root.u
                     text: root.sideNames[sector.index]
                     color: root.alpha(root.ink(sector.c), 0.9)
                 }

@@ -183,4 +183,4 @@ The `.plasmoid` files in that folder are ready to share.
 | Sky | `#CDEBFF` | Links, downloads |
 | Red | `#E0242B` | Alerts, close, mute |
 
-Font: **Orbitron** (SIL Open Font License), installed in `~/.local/share/fonts/`.
+Font: **Share Tech** (SIL Open Font License), installed in `~/.local/share/fonts/`.

@@ -19,8 +19,8 @@ and the GTK 4 colours. Your panels and your icon theme stay as they are.
 | `oranje` | Dutch national team–inspired: orange, white and flag blue on dark navy | next match, last result, tournament countdown (TheSportsDB) | Oswald |
 | `feyenoord` | Feyenoord-inspired: club red, white and black, De Kuip match night | next match, last result, Eredivisie position (TheSportsDB) | Teko |
 | `mvv` | MVV Maastricht–inspired: red and white, De Geusselt match night | next match, last result, Eerste Divisie table (TheSportsDB) | Archivo Narrow |
-| `maastricht` | Maastricht city–inspired: marl-stone gold, Maas blue and brick on slate | weather, sunrise/sunset, carnival countdown (Open-Meteo) | Josefin Sans |
-| `starwars` | Star Wars–inspired cockpit: crawl yellow, saber blue and red, star field | destination of the day, May the 4th countdown, galactic time (offline) | Orbitron |
+| `maastricht` | Maastricht city–inspired: marl-stone gold, Maas blue and brick on slate | weather, sunrise/sunset, carnival countdown (Open-Meteo) | Fjalla One |
+| `starwars` | Star Wars–inspired cockpit: crawl yellow, saber blue and red, star field | destination of the day, May the 4th countdown, galactic time (offline) | Share Tech |
 | `stargate` | Stargate-inspired gate room: chevron orange and event-horizon blue | gate address of the day, iris status, teams offworld (offline) | Rajdhani |
 
 <sub>Screenshots below: one 1920×1080 screen of a real desktop. Click a theme for all six shots
@@ -168,8 +168,8 @@ blocks. Your panels, icons and fonts stay; settings backups stay in
   (Plasma Style LGPL, Aurorae decoration GPL-3.0). Credit is kept in their metadata.
 - Fonts, all SIL Open Font License (`OFL.txt` next to each copy): **Antonio**; **Barlow Condensed**
   by Jeremy Tribby; **Oswald** by Vernon Adams, Kalapi Gajjar and Cyreal; **Teko** and **Rajdhani**
-  by Indian Type Foundry; **Archivo Narrow** by Omnibus-Type; **Josefin Sans** by Santiago Orozco;
-  **Orbitron** by Matt McInerney.
+  by Indian Type Foundry; **Archivo Narrow** by Omnibus-Type; **Fjalla One** by Sorkin Type;
+  **Share Tech** by Carrois Apostrophe.
 - The generated wallpapers: CC-BY-SA-4.0.
 - Live data: F1 data from the free [Jolpica F1 API](https://github.com/jolpica/jolpica-f1); football
   data from the free [TheSportsDB](https://www.thesportsdb.com) API; weather from the free

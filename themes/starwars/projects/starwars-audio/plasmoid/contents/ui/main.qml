@@ -53,7 +53,7 @@ PlasmoidItem {
         hoverEnabled: true
         onClicked: root.toggleOverlay()
 
-        FontLoader { id: themeFont; source: "fonts/Orbitron-Variable.ttf" }
+        FontLoader { id: themeFont; source: "fonts/ShareTech-Regular.ttf" }
 
         Rectangle {
             id: pill
@@ -69,7 +69,7 @@ PlasmoidItem {
                 anchors.centerIn: parent
                 text: button.vertical ? "AUD" : "AUDIO"
                 color: root.overlay || false ? "#04060A" : "white"
-                font.family: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Orbitron"
+                font.family: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Share Tech"
                 font.italic: false
                 font.weight: Font.DemiBold
                 font.pixelSize: button.h * 0.7

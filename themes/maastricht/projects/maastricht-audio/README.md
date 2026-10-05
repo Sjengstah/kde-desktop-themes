@@ -66,5 +66,5 @@ Then remove the shortcut in System Settings.
 - It uses Plasma's own audio module (`org.kde.plasma.private.volume`), the same
   one the volume applet uses. It's a private API, so a future Plasma release
   could change it.
-- The MAASTRICHT font is Josefin Sans, included under the SIL Open Font License
+- The MAASTRICHT font is Fjalla One, included under the SIL Open Font License
   (`fonts/OFL.txt`).

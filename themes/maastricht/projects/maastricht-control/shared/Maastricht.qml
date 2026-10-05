@@ -26,8 +26,8 @@ QtObject {
     // Base unit: half a KDE grid unit, so everything follows the system font size.
     readonly property real u: Kirigami.Units.gridUnit * 0.5
 
-    readonly property FontLoader fontLoader: FontLoader { source: Qt.resolvedUrl("fonts/JosefinSans-Variable.ttf") }
-    readonly property string font: fontLoader.status === FontLoader.Ready ? fontLoader.font.family : "Josefin Sans"
+    readonly property FontLoader fontLoader: FontLoader { source: Qt.resolvedUrl("fonts/FjallaOne-Regular.ttf") }
+    readonly property string font: fontLoader.status === FontLoader.Ready ? fontLoader.font.family : "Fjalla One"
 
     function dim(c, a) {
         return Qt.rgba(c.r, c.g, c.b, a === undefined ? 0.18 : a)

@@ -22,13 +22,23 @@ Item {
         outerRadius: 3.5 * StarWars.u
         innerRadius: 1.4 * StarWars.u
     }
+    TextMetrics {
+        id: titleMetrics
+        font.family: StarWars.font
+        font.italic: StarWars.italic
+        font.weight: Font.DemiBold
+        font.pixelSize: 3.4 * StarWars.u
+        text: h.title.toUpperCase()
+    }
     Row {
         x: elbow.width + 0.5 * StarWars.u
         width: parent.width - x
         spacing: 0.5 * StarWars.u
-        Rectangle { width: parent.width - titleText.width - 6 * StarWars.u; height: 2.6 * StarWars.u; color: StarWars.violet }
+        Rectangle { width: Math.max(StarWars.u, parent.width - titleText.width - 6 * StarWars.u); height: 2.6 * StarWars.u; color: StarWars.violet }
         LText {
             id: titleText
+            // never wider than the space next to the elbow (it shrinks to fit instead)
+            width: Math.min(Math.ceil(titleMetrics.advanceWidth) + 2, parent.width - 7 * StarWars.u)
             height: 2.6 * StarWars.u
             verticalAlignment: Text.AlignVCenter
             text: h.title

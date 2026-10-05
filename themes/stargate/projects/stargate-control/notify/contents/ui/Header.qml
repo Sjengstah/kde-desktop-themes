@@ -22,13 +22,23 @@ Item {
         outerRadius: 3.5 * Stargate.u
         innerRadius: 1.4 * Stargate.u
     }
+    TextMetrics {
+        id: titleMetrics
+        font.family: Stargate.font
+        font.italic: Stargate.italic
+        font.weight: Font.DemiBold
+        font.pixelSize: 3.4 * Stargate.u
+        text: h.title.toUpperCase()
+    }
     Row {
         x: elbow.width + 0.5 * Stargate.u
         width: parent.width - x
         spacing: 0.5 * Stargate.u
-        Rectangle { width: parent.width - titleText.width - 6 * Stargate.u; height: 2.6 * Stargate.u; color: Stargate.violet }
+        Rectangle { width: Math.max(Stargate.u, parent.width - titleText.width - 6 * Stargate.u); height: 2.6 * Stargate.u; color: Stargate.violet }
         LText {
             id: titleText
+            // never wider than the space next to the elbow (it shrinks to fit instead)
+            width: Math.min(Math.ceil(titleMetrics.advanceWidth) + 2, parent.width - 7 * Stargate.u)
             height: 2.6 * Stargate.u
             verticalAlignment: Text.AlignVCenter
             text: h.title

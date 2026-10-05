@@ -183,4 +183,4 @@ The `.plasmoid` files in that folder are ready to share.
 | Sky | `#D6E6F4` | Links, downloads |
 | Red | `#C0392B` | Alerts, close, mute |
 
-Font: **Josefin Sans** (SIL Open Font License), installed in `~/.local/share/fonts/`.
+Font: **Fjalla One** (SIL Open Font License), installed in `~/.local/share/fonts/`.

@@ -14,7 +14,7 @@ cp -r look-and-feel/STARWARS "$data/plasma/look-and-feel/"
 cp -r aurorae/STARWARS "$data/aurorae/themes/"
 cp -r wallpapers/STARWARS "$data/wallpapers/"
 cp color-schemes/STARWARS.colors "$data/color-schemes/"
-cp look-and-feel/STARWARS/contents/splash/fonts/Orbitron-Variable.ttf "$data/fonts/"
+cp look-and-feel/STARWARS/contents/splash/fonts/ShareTech-Regular.ttf "$data/fonts/"
 fc-cache -f "$data/fonts" >/dev/null 2>&1 || true
 rm -f "$HOME"/.cache/plasma_theme_STARWARS*.kcache
 

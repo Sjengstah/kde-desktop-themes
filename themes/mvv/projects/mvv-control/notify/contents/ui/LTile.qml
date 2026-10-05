@@ -52,8 +52,9 @@ Item {
         }
         LText {
             x: titleText.x
-            anchors.top: titleText.bottom
-            anchors.topMargin: 0.4 * Mvv.u
+            // pinned to the bottom, so tall fonts don't push it out of the tile
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0.8 * Mvv.u
             width: titleText.width
             text: tile.subtitle
             color: tile.active ? Mvv.dim(Mvv.ink(tile.accent), 0.75) : Mvv.tan

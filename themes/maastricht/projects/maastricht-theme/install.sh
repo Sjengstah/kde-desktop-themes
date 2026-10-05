@@ -14,7 +14,7 @@ cp -r look-and-feel/MAASTRICHT "$data/plasma/look-and-feel/"
 cp -r aurorae/MAASTRICHT "$data/aurorae/themes/"
 cp -r wallpapers/MAASTRICHT "$data/wallpapers/"
 cp color-schemes/MAASTRICHT.colors "$data/color-schemes/"
-cp look-and-feel/MAASTRICHT/contents/splash/fonts/JosefinSans-Variable.ttf "$data/fonts/"
+cp look-and-feel/MAASTRICHT/contents/splash/fonts/FjallaOne-Regular.ttf "$data/fonts/"
 fc-cache -f "$data/fonts" >/dev/null 2>&1 || true
 rm -f "$HOME"/.cache/plasma_theme_MAASTRICHT*.kcache
 

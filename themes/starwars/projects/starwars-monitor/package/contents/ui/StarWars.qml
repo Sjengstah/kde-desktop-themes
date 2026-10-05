@@ -22,8 +22,8 @@ QtObject {
     readonly property string corner: "cut"
     readonly property bool italic: false
 
-    readonly property FontLoader fontLoader: FontLoader { source: Qt.resolvedUrl("../fonts/Orbitron-Variable.ttf") }
-    readonly property string font: fontLoader.status === FontLoader.Ready ? fontLoader.font.family : "Orbitron"
+    readonly property FontLoader fontLoader: FontLoader { source: Qt.resolvedUrl("../fonts/ShareTech-Regular.ttf") }
+    readonly property string font: fontLoader.status === FontLoader.Ready ? fontLoader.font.family : "Share Tech"
 
     function dim(c, a) {
         return Qt.rgba(c.r, c.g, c.b, a === undefined ? 0.18 : a)

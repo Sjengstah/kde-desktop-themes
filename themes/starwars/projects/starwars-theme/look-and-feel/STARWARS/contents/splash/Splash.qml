@@ -15,8 +15,8 @@ Rectangle {
 
     color: "#04060A"
 
-    FontLoader { id: themeFont; source: "fonts/Orbitron-Variable.ttf" }
-    readonly property string font: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Orbitron"
+    FontLoader { id: themeFont; source: "fonts/ShareTech-Regular.ttf" }
+    readonly property string font: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Share Tech"
 
     component LText: Text {
         font.family: root.font

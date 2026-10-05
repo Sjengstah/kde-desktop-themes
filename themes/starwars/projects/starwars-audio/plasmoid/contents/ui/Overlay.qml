@@ -55,8 +55,8 @@ Window {
     readonly property bool round: false
     readonly property string corner: "cut"
 
-    FontLoader { id: themeFont; source: "fonts/Orbitron-Variable.ttf" }
-    readonly property string fontFamily: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Orbitron"
+    FontLoader { id: themeFont; source: "fonts/ShareTech-Regular.ttf" }
+    readonly property string fontFamily: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Share Tech"
 
     // Placement: centred horizontally, just below the top panel.
     readonly property int topPanelHeight: 34

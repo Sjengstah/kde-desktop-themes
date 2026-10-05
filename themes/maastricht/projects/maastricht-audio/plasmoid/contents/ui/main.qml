@@ -53,7 +53,7 @@ PlasmoidItem {
         hoverEnabled: true
         onClicked: root.toggleOverlay()
 
-        FontLoader { id: themeFont; source: "fonts/JosefinSans-Variable.ttf" }
+        FontLoader { id: themeFont; source: "fonts/FjallaOne-Regular.ttf" }
 
         Rectangle {
             id: pill
@@ -69,7 +69,7 @@ PlasmoidItem {
                 anchors.centerIn: parent
                 text: button.vertical ? "AUD" : "AUDIO"
                 color: root.overlay || true ? "#0E1418" : "white"
-                font.family: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Josefin Sans"
+                font.family: themeFont.status === FontLoader.Ready ? themeFont.font.family : "Fjalla One"
                 font.italic: false
                 font.weight: Font.DemiBold
                 font.pixelSize: button.h * 0.7

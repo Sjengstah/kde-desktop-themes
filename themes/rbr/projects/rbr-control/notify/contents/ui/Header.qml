@@ -22,13 +22,23 @@ Item {
         outerRadius: 3.5 * Rbr.u
         innerRadius: 1.4 * Rbr.u
     }
+    TextMetrics {
+        id: titleMetrics
+        font.family: Rbr.font
+        font.italic: Rbr.italic
+        font.weight: Font.DemiBold
+        font.pixelSize: 3.4 * Rbr.u
+        text: h.title.toUpperCase()
+    }
     Row {
         x: elbow.width + 0.5 * Rbr.u
         width: parent.width - x
         spacing: 0.5 * Rbr.u
-        Rectangle { width: parent.width - titleText.width - 6 * Rbr.u; height: 2.6 * Rbr.u; color: Rbr.violet }
+        Rectangle { width: Math.max(Rbr.u, parent.width - titleText.width - 6 * Rbr.u); height: 2.6 * Rbr.u; color: Rbr.violet }
         LText {
             id: titleText
+            // never wider than the space next to the elbow (it shrinks to fit instead)
+            width: Math.min(Math.ceil(titleMetrics.advanceWidth) + 2, parent.width - 7 * Rbr.u)
             height: 2.6 * Rbr.u
             verticalAlignment: Text.AlignVCenter
             text: h.title
