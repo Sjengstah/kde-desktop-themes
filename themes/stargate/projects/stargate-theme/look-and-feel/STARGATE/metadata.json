@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "Stargate SG-1–inspired global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "STARGATE",
+        "License": "GPL-2.0-or-later",
+        "Name": "STARGATE",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

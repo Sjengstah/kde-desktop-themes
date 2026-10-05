@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "System Information",
+        "Description": "CPU, GPU, memory, network and disk readouts in LCARS style",
+        "Icon": "utilities-system-monitor",
+        "Id": "org.sjengstah.lcarsmonitor",
+        "License": "GPL-2.0-or-later",
+        "Name": "LCARS System Monitor",
+        "Version": "1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "Star Trek LCARS global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "LCARS",
+        "License": "GPL-2.0-or-later",
+        "Name": "LCARS",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

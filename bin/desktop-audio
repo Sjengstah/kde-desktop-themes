@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Meta+G target: toggle the audio overlay of the active desktop theme.
+# KWin caches a .desktop Exec line until re-login, so the shortcut always runs this
+# script and it picks <theme>-audio at press time.
+theme=$(cat "${XDG_CONFIG_HOME:-$HOME/.config}/desktop-theme/current" 2>/dev/null || echo none)
+[[ -x "$HOME/.local/bin/${theme}-audio" ]] || { notify-send "Audio overlay" "No desktop theme active (desktop-theme list)"; exit 1; }
+exec "$HOME/.local/bin/${theme}-audio" "$@"

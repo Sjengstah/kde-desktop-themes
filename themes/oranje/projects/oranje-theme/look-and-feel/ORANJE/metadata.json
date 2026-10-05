@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "Dutch national football team (Oranje)–inspired global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "ORANJE",
+        "License": "GPL-2.0-or-later",
+        "Name": "ORANJE",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

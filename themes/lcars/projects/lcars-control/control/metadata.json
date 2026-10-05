@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "System Information",
+        "Description": "LCARS control centre: Wi-Fi, Bluetooth, power plan, caffeine, Do Not Disturb, Night Light, audio and quick actions",
+        "Icon": "preferences-system",
+        "Id": "org.sjengstah.lcarscontrol",
+        "License": "GPL-2.0-or-later",
+        "Name": "LCARS Control Center",
+        "Version": "1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

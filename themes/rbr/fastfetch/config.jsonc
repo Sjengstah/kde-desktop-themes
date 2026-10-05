@@ -1,0 +1,59 @@
+// RBR fastfetch config. Palette matches ~/Projects/rbr-theme
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/flag.txt",
+    "color": {
+      "1": "38;2;232;237;247",  // chequered flag: white squares
+      "2": "38;2;62;76;115",    // chequered flag: dark squares
+      "3": "38;2;219;10;64"     // flag pole: RBR red
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 28 },
+    "color": { "keys": "38;2;219;10;64", "output": "38;2;232;237;247" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;219;10;64}▐██████{#38;2;54;113;198}██{#38;2;143;174;245}████ {#1;38;2;219;10;64}RBR PIT WALL 01 {#38;2;143;174;245}████{#38;2;219;10;64}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;198;214;247}▐█ LAP (DAY)",
+      // the year is the race, each day a lap (same as Rbr.qml lap())
+      "text": "echo \"$(date +%-j)/$(date -d \"$(date +%Y)-12-31\" +%-j)\""
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;198;214;247}▐█ DRIVER (USER)",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;54;113;198}▐███ {#1;38;2;54;113;198}CAR SETUP {#0;38;2;54;113;198}███████████████████████▌" },
+    { "type": "os",       "key": "▐█ CHASSIS (OS)" },
+    { "type": "kernel",   "key": "▐█ ECU FIRMWARE (KERNEL)" },
+    { "type": "uptime",   "key": "▐█ RACE TIME (UPTIME)" },
+    { "type": "packages", "key": "▐█ PARTS LIST (PACKAGES)" },
+    { "type": "shell",    "key": "▐█ STEERING WHEEL (SHELL)" },
+    { "type": "de",       "key": "▐█ COCKPIT (DESKTOP)" },
+    { "type": "terminal", "key": "▐█ DASH DISPLAY (TERMINAL)" },
+    "break",
+    { "type": "custom", "format": "{#38;2;255;201;6}▐███ {#1;38;2;255;201;6}POWER UNIT {#0;38;2;255;201;6}██████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ ENGINE (CPU)", "temp": true },
+    { "type": "gpu",      "key": "▐█ ERS BOOST (GPU)" },
+    { "type": "memory",   "key": "▐█ FUEL LOAD (MEMORY)" },
+    { "type": "swap",     "key": "▐█ RESERVE FUEL (SWAP)" },
+    { "type": "disk",     "key": "▐█ GARAGE (STORAGE) {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ ONBOARD CAMERA (DISPLAY)" },
+    { "type": "localip",  "key": "▐█ TEAM RADIO (NETWORK)" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;219;10;64}▐████{#38;2;232;237;247}████{#38;2;54;113;198}████{#38;2;143;174;245}████{#38;2;198;214;247}████{#38;2;255;201;6}████{#38;2;255;90;95}████{#38;2;219;10;64}████▌"
+    }
+  ]
+}

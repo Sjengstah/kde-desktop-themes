@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Description": "Live MVV wallpaper: the match-night design with MVV's next match, last result and league table",
+        "Icon": "preferences-desktop-wallpaper",
+        "Id": "org.sjengstah.mvvwallpaper",
+        "License": "GPL-3.0-or-later",
+        "Name": "MVV Live",
+        "Version": "1.0"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

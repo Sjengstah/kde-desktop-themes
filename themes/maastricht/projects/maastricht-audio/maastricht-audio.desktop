@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MAASTRICHT Audio
+Comment=Toggle the MAASTRICHT audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

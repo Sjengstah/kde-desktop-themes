@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Audio Overlay
+Comment=Game Bar style audio controls that work over fullscreen games
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

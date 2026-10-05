@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Description": "Live STARGATE wallpaper: the gate-room design with the gate address of the day, iris status and teams offworld",
+        "Icon": "preferences-desktop-wallpaper",
+        "Id": "org.sjengstah.stargatewallpaper",
+        "License": "GPL-3.0-or-later",
+        "Name": "STARGATE Live",
+        "Version": "1.0"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

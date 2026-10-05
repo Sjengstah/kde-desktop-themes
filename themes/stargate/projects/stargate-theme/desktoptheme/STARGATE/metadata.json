@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "sjengstah"
+            },
+            {
+                "Name": "jomada (Carl)",
+                "Email": "gicalucejo@gmail.com"
+            }
+        ],
+        "Category": "",
+        "Description": "Stargate SG-1–inspired Plasma Style, based on Carl by jomada",
+        "EnabledByDefault": true,
+        "Id": "STARGATE",
+        "License": "LGPL",
+        "Name": "STARGATE",
+        "Version": "1.0",
+        "Website": "https://seduccionlinux.wordpress.com"
+    },
+    "X-Plasma-API": "5.0"
+}

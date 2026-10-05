@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Toggle the RBR audio overlay: opens it, or closes it when it's already open.
+set -euo pipefail
+
+dir="${RBR_AUDIO_DIR:-$HOME/.local/share/rbr-audio}"
+overlay="$dir/Overlay.qml"
+
+if pkill -f -- "$overlay" 2>/dev/null; then
+    exit 0
+fi
+
+# The QML runtime has a different name per distribution.
+for runtime in qml6 qml-qt6 /usr/lib64/qt6/bin/qml /usr/lib/qt6/bin/qml; do
+    if command -v "$runtime" >/dev/null 2>&1; then
+        exec "$runtime" "$overlay" >/dev/null 2>&1
+    fi
+done
+
+notify-send -a "RBR Audio" "RBR Audio" "Qt 6 QML runtime not found. See the README for the package to install." 2>/dev/null \
+    || echo "Qt 6 QML runtime not found. See the README." >&2
+exit 1

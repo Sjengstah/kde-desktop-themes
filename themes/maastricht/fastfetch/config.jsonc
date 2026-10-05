@@ -1,0 +1,59 @@
+// MAASTRICHT fastfetch config (Maastricht city–inspired look). Palette matches the MAASTRICHT theme.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": {
+      "1": "38;2;217;167;95",
+      "2": "38;2;143;184;222",
+      "3": "38;2;240;210;140",
+      "4": "38;2;246;238;223"
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 28 },
+    "color": { "keys": "38;2;217;167;95", "output": "38;2;246;238;223" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;217;167;95}▐██████{#38;2;31;78;121}██{#38;2;143;184;222}████ {#1;38;2;217;167;95}MESTREECH {#38;2;143;184;222}████{#38;2;217;167;95}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;214;230;244}▐█ STADSKLOK",
+      "text": "date +%H:%M"
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;214;230;244}▐█ BURGER (USER)",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;31;78;121}▐███ {#1;38;2;31;78;121}STAD {#0;38;2;31;78;121}███████████████████████▌" },
+    { "type": "os",       "key": "▐█ STADHUIS (OS)" },
+    { "type": "kernel",   "key": "▐█ FUNDAMENT (KERNEL)" },
+    { "type": "uptime",   "key": "▐█ SINCE OPENING (UPTIME)" },
+    { "type": "packages", "key": "▐█ MARKET STALLS (PACKAGES)" },
+    { "type": "shell",    "key": "▐█ BRIDGE (SHELL)" },
+    { "type": "de",       "key": "▐█ VRIJTHOF (DESKTOP)" },
+    { "type": "terminal", "key": "▐█ LANTERN (TERMINAL)" },
+    "break",
+    { "type": "custom", "format": "{#38;2;240;210;140}▐███ {#1;38;2;240;210;140}CITY SERVICES {#0;38;2;240;210;140}██████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ VRIJTHOF (CPU)", "temp": true },
+    { "type": "gpu",      "key": "▐█ SINT SERVAAS (GPU)" },
+    { "type": "memory",   "key": "▐█ MERGEL (MEMORY)" },
+    { "type": "swap",     "key": "▐█ CELLAR (SWAP)" },
+    { "type": "disk",     "key": "▐█ ARCHIEF (STORAGE) {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ SHOP WINDOW (DISPLAY)" },
+    { "type": "localip",  "key": "▐█ MAASBRUG (NETWORK)" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;217;167;95}▐████{#38;2;246;238;223}████{#38;2;31;78;121}████{#38;2;143;184;222}████{#38;2;214;230;244}████{#38;2;240;210;140}████{#38;2;192;57;43}████{#38;2;217;167;95}████▌"
+    }
+  ]
+}

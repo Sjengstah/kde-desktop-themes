@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Description": "Live STARWARS wallpaper: the cockpit design with today's destination, a May the 4th countdown and galactic time",
+        "Icon": "preferences-desktop-wallpaper",
+        "Id": "org.sjengstah.starwarswallpaper",
+        "License": "GPL-3.0-or-later",
+        "Name": "STARWARS Live",
+        "Version": "1.0"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

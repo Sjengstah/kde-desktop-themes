@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "Maastricht city–inspired global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "MAASTRICHT",
+        "License": "GPL-2.0-or-later",
+        "Name": "MAASTRICHT",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

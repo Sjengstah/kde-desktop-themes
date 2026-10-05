@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Desktop Theme Audio Overlay
+Comment=Volume panel of the active desktop theme
+Exec=@BIN@/desktop-audio
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;

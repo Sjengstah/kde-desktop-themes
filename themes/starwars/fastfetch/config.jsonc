@@ -1,0 +1,59 @@
+// STARWARS fastfetch config (Star Wars–inspired look). Palette matches the STARWARS theme.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": {
+      "1": "38;2;255;232;31",
+      "2": "38;2;79;195;247",
+      "3": "38;2;255;159;28",
+      "4": "38;2;234;242;255"
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 28 },
+    "color": { "keys": "38;2;255;232;31", "output": "38;2;234;242;255" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;255;232;31}▐██████{#38;2;31;58;147}██{#38;2;79;195;247}████ {#1;38;2;255;232;31}MAY THE FORCE BE WITH YOU {#38;2;79;195;247}████{#38;2;255;232;31}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;205;235;255}▐█ GST (ABY.DAY)",
+      "text": "echo $(( $(date +%Y) - 1977 )).$(date +%j)"
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;205;235;255}▐█ PILOT (USER)",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;31;58;147}▐███ {#1;38;2;31;58;147}STARSHIP {#0;38;2;31;58;147}███████████████████████▌" },
+    { "type": "os",       "key": "▐█ HULL (OS)" },
+    { "type": "kernel",   "key": "▐█ REACTOR (KERNEL)" },
+    { "type": "uptime",   "key": "▐█ SINCE LAST JUMP (UPTIME)" },
+    { "type": "packages", "key": "▐█ CARGO (PACKAGES)" },
+    { "type": "shell",    "key": "▐█ ASTROMECH (SHELL)" },
+    { "type": "de",       "key": "▐█ COCKPIT (DESKTOP)" },
+    { "type": "terminal", "key": "▐█ COMLINK (TERMINAL)" },
+    "break",
+    { "type": "custom", "format": "{#38;2;255;159;28}▐███ {#1;38;2;255;159;28}SHIP SYSTEMS {#0;38;2;255;159;28}██████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ HYPERDRIVE (CPU)", "temp": true },
+    { "type": "gpu",      "key": "▐█ TURBOLASERS (GPU)" },
+    { "type": "memory",   "key": "▐█ DEFLECTORS (MEMORY)" },
+    { "type": "swap",     "key": "▐█ ESCAPE POD (SWAP)" },
+    { "type": "disk",     "key": "▐█ CARGO HOLD (STORAGE) {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ VIEWSCREEN (DISPLAY)" },
+    { "type": "localip",  "key": "▐█ HOLONET (NETWORK)" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;255;232;31}▐████{#38;2;234;242;255}████{#38;2;31;58;147}████{#38;2;79;195;247}████{#38;2;205;235;255}████{#38;2;255;159;28}████{#38;2;224;36;43}████{#38;2;255;232;31}████▌"
+    }
+  ]
+}

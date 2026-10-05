@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "sjengstah"
+            },
+            {
+                "Name": "jomada (Carl)",
+                "Email": "gicalucejo@gmail.com"
+            }
+        ],
+        "Category": "",
+        "Description": "Star Trek LCARS Plasma Style, based on Carl by jomada",
+        "EnabledByDefault": true,
+        "Id": "LCARS",
+        "License": "LGPL",
+        "Name": "LCARS",
+        "Version": "1.0",
+        "Website": "https://seduccionlinux.wordpress.com"
+    },
+    "X-Plasma-API": "5.0"
+}

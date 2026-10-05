@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "F1 Red Bull Racing–style global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "RBR",
+        "License": "GPL-2.0-or-later",
+        "Name": "RBR",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

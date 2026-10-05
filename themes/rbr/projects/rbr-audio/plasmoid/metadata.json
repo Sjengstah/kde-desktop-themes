@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "Multimedia",
+        "Description": "RBR audio overlay: output, microphone and per-app volume, above fullscreen games",
+        "Icon": "audio-volume-high",
+        "Id": "org.sjengstah.rbraudio",
+        "License": "GPL-2.0-or-later",
+        "Name": "RBR Audio",
+        "Version": "1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

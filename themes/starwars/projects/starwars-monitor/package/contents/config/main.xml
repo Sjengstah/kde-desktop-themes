@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="showCpu" type="Bool"><default>true</default></entry>
+    <entry name="showGpu" type="Bool"><default>true</default></entry>
+    <entry name="showMem" type="Bool"><default>true</default></entry>
+    <entry name="showNet" type="Bool"><default>true</default></entry>
+    <entry name="showDisk" type="Bool"><default>true</default></entry>
+    <entry name="panelCpu" type="Bool"><default>true</default></entry>
+    <entry name="panelGpu" type="Bool"><default>true</default></entry>
+    <entry name="panelMem" type="Bool"><default>true</default></entry>
+    <entry name="panelNet" type="Bool"><default>true</default></entry>
+    <entry name="panelDisk" type="Bool"><default>false</default></entry>
+    <entry name="background" type="Int"><default>0</default></entry>
+    <entry name="footerText" type="String"><default>MAY THE FORCE BE WITH YOU</default></entry>
+    <entry name="updateInterval" type="Int"><default>1000</default></entry>
+    <entry name="gpu" type="String"><default>gpu0</default></entry>
+    <entry name="network" type="String"><default>all</default></entry>
+    <entry name="cpuTempSensor" type="String"><default>cpu/all/maximumTemperature</default></entry>
+    <entry name="disks" type="String"><default></default></entry>
+  </group>
+</kcfg>

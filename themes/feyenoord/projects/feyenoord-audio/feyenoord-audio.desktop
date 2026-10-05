@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=FEYENOORD Audio
+Comment=Toggle the FEYENOORD audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "MVV Maastricht–inspired global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "MVV",
+        "License": "GPL-2.0-or-later",
+        "Name": "MVV",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

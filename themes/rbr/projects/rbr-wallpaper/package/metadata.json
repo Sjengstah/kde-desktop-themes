@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Description": "Live RBR wallpaper: the pit-wall design with F1 season data in the sectors",
+        "Icon": "preferences-desktop-wallpaper",
+        "Id": "org.sjengstah.rbrwallpaper",
+        "License": "GPL-3.0-or-later",
+        "Name": "RBR Live",
+        "Version": "1.0"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

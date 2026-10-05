@@ -1,0 +1,202 @@
+{
+  "panels": [
+    {
+      "location": "bottom",
+      "thickness": 34,
+      "props": {
+        "screen": 0,
+        "height": 34,
+        "opacity": "translucent",
+        "floating": true,
+        "lengthMode": "fill",
+        "alignment": "center",
+        "hiding": "none"
+      },
+      "view": {
+        "floatingApplets": "1"
+      },
+      "applets": [
+        {
+          "plugin": "org.kde.plasma.kickoff",
+          "config": {
+            "General": {
+              "icon": "org.cachyos.hello",
+              "systemFavorites": "suspend\\\\,hibernate\\\\,reboot\\\\,shutdown"
+            }
+          }
+        },
+        {
+          "plugin": "org.kde.plasma.pager",
+          "config": {}
+        },
+        {
+          "plugin": "org.kde.plasma.icontasks",
+          "config": {
+            "General": {
+              "launchers": "applications:systemsettings.desktop,preferred://filemanager,preferred://browser"
+            }
+          }
+        },
+        {
+          "plugin": "org.kde.plasma.marginsseparator",
+          "config": {}
+        },
+        {
+          "plugin": "org.kde.plasma.systemtray",
+          "config": {
+            "General": {
+              "extraItems": "org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.weather,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.kdeconnect,org.kde.plasma.devicenotifier,org.kde.plasma.bluetooth,org.kde.plasma.volume",
+              "knownItems": "org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.weather,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume",
+              "shownItems": "org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.kdeconnect,org.kde.plasma.devicenotifier,org.kde.plasma.bluetooth,org.kde.plasma.volume"
+            }
+          },
+          "trayGeneral": {
+            "extraItems": "org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.weather,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.kdeconnect,org.kde.plasma.devicenotifier,org.kde.plasma.bluetooth,org.kde.plasma.volume",
+            "knownItems": "org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.weather,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume",
+            "shownItems": "org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.kdeconnect,org.kde.plasma.devicenotifier,org.kde.plasma.bluetooth,org.kde.plasma.volume"
+          }
+        },
+        {
+          "plugin": "org.kde.plasma.digitalclock",
+          "config": {}
+        },
+        {
+          "plugin": "org.kde.plasma.showdesktop",
+          "config": {}
+        }
+      ]
+    },
+    {
+      "location": "top",
+      "thickness": 34,
+      "props": {
+        "screen": 0,
+        "height": 34,
+        "opacity": "adaptive",
+        "floating": true,
+        "lengthMode": "fill",
+        "alignment": "center",
+        "hiding": "none"
+      },
+      "view": {},
+      "applets": [
+        {
+          "plugin": "org.kde.plasma.panelspacer",
+          "config": {}
+        },
+        {
+          "plugin": "org.sjengstah.oranjeaudio",
+          "config": {}
+        },
+        {
+          "plugin": "org.kde.plasma.panelspacer",
+          "config": {
+            "General": {
+              "expanding": "false",
+              "length": "10"
+            }
+          }
+        },
+        {
+          "plugin": "org.sjengstah.oranjemonitor",
+          "config": {},
+          "shortcut": "Meta+Shift+C"
+        },
+        {
+          "plugin": "org.kde.plasma.systemmonitor.cpucore",
+          "config": {
+            "General": {
+              "CurrentPreset": "org.kde.plasma.systemmonitor"
+            },
+            "Appearance": {
+              "chartFace": "org.kde.ksysguard.barchart",
+              "title": "Individual Core Usage"
+            },
+            "SensorColors": {
+              "cpu/cpu.*/usage": "61,174,233",
+              "cpu/cpu0/usage": "61,174,233",
+              "cpu/cpu1/usage": "61,131,233",
+              "cpu/cpu10/usage": "233,61,88",
+              "cpu/cpu11/usage": "233,77,61",
+              "cpu/cpu12/usage": "233,120,61",
+              "cpu/cpu13/usage": "233,163,61",
+              "cpu/cpu14/usage": "233,206,61",
+              "cpu/cpu15/usage": "217,233,61",
+              "cpu/cpu16/usage": "174,233,61",
+              "cpu/cpu17/usage": "131,233,61",
+              "cpu/cpu18/usage": "88,233,61",
+              "cpu/cpu19/usage": "61,233,77",
+              "cpu/cpu2/usage": "61,88,233",
+              "cpu/cpu20/usage": "61,233,120",
+              "cpu/cpu21/usage": "61,233,163",
+              "cpu/cpu22/usage": "61,233,206",
+              "cpu/cpu23/usage": "61,217,233",
+              "cpu/cpu3/usage": "77,61,233",
+              "cpu/cpu4/usage": "120,61,233",
+              "cpu/cpu5/usage": "163,61,233",
+              "cpu/cpu6/usage": "206,61,233",
+              "cpu/cpu7/usage": "233,61,217",
+              "cpu/cpu8/usage": "233,61,174",
+              "cpu/cpu9/usage": "233,61,131"
+            },
+            "Sensors": {
+              "highPrioritySensorIds": "[\"cpu/cpu.*/usage\"]",
+              "totalSensors": "[\"cpu/all/usage\"]"
+            }
+          }
+        },
+        {
+          "plugin": "org.kde.plasma.panelspacer",
+          "config": {}
+        },
+        {
+          "plugin": "org.sjengstah.oranjecontrol",
+          "config": {},
+          "shortcut": "Meta+Shift+K"
+        },
+        {
+          "plugin": "org.kde.plasma.panelspacer",
+          "config": {
+            "General": {
+              "expanding": "false",
+              "length": "35"
+            }
+          }
+        },
+        {
+          "plugin": "org.sjengstah.oranjenotify",
+          "config": {},
+          "shortcut": "Meta+Shift+N"
+        },
+        {
+          "plugin": "org.kde.plasma.panelspacer",
+          "config": {
+            "General": {
+              "expanding": "false",
+              "length": "20"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "desktop": {
+    "applets": [
+      {
+        "plugin": "org.sjengstah.oranjemonitor",
+        "config": {
+          "General": {
+            "background": "2",
+            "panelDisk": "true"
+          }
+        },
+        "geometry": [
+          0,
+          0,
+          848,
+          976
+        ]
+      }
+    ]
+  }
+}

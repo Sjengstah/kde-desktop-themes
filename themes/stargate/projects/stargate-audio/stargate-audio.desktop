@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=STARGATE Audio
+Comment=Toggle the STARGATE audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "System Information",
+        "Description": "ORANJE notification centre: history, actions, clear all and Do Not Disturb",
+        "Icon": "preferences-desktop-notification-bell",
+        "Id": "org.sjengstah.oranjenotify",
+        "License": "GPL-2.0-or-later",
+        "Name": "ORANJE Notification Center",
+        "Version": "1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

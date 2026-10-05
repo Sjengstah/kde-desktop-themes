@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Set the panel transparency of the active Plasma Style (Carl-translucent or ORANJE).
+#   panel-opacity        show the current value
+#   panel-opacity 50     panel background at 50% opacity (10-100)
+# Only panels set to "Translucent" use this; "Adaptive" panels turn opaque
+# whenever a window is maximized.
+set -euo pipefail
+
+themes="$HOME/.local/share/plasma/desktoptheme"
+theme=$(kreadconfig6 --file plasmarc --group Theme --key name)
+case "$theme" in
+    Carl-translucent) source_theme=Carl; fill="#111216" ;;
+    ORANJE)            source_theme=ORANJE; fill="#0A1020" ;;
+    *) echo "The active Plasma Style ($theme) isn't supported. Use Carl-translucent or ORANJE." >&2; exit 1 ;;
+esac
+source_svg="$themes/$source_theme/widgets/panel-background.svgz"
+target_svg="$themes/$theme/translucent/widgets/panel-background.svgz"
+
+if [[ $# -eq 0 ]]; then
+    current=$(zcat "$target_svg" | grep -oE "fill:$fill[^\"]*fill-opacity:[0-9.]+" | grep -oE '[0-9.]+$' | head -1)
+    echo "Current panel opacity: $(python3 -c "print(round($current * 100))")%"
+    exit 0
+fi
+
+if ! [[ $1 =~ ^[0-9]+$ ]] || (( $1 < 10 || $1 > 100 )); then
+    echo "Usage: panel-opacity <10-100>" >&2
+    exit 1
+fi
+
+# Always start from the opaque panel file, so values never stack up.
+zcat "$source_svg" | python3 -c '
+import re, sys
+opacity, fill = int(sys.argv[1]) / 100, sys.argv[2]
+svg = sys.stdin.read()
+def fix(m):
+    tag = m.group(0)
+    return tag.replace("fill-opacity:1", f"fill-opacity:{opacity:g}") if "fill:" + fill in tag else tag
+sys.stdout.write(re.sub(r"<(rect|path)\b[^>]*>", fix, svg, flags=re.S))
+' "$1" "$fill" | gzip -9 > "$target_svg"
+
+# Plasma keeps rendered theme images cached, so clear the caches and restart
+# the shell to make it load the new panel background.
+rm -f "$HOME/.cache/ksvg-elements" "$HOME"/.cache/plasma_theme_*.kcache
+systemctl --user restart plasma-plasmashell
+echo "Panel opacity set to $1%"

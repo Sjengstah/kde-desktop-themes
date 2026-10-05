@@ -1,0 +1,26 @@
+{
+    "KPackageStructure": "aurorae",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "sjengstah"
+            },
+            {
+                "Name": "jomada (Carl)",
+                "Email": "gicalucejo@gmail.com"
+            }
+        ],
+        "Category": "Plasma 6 Window Decorations",
+        "ServiceTypes": [
+            "aurorae"
+        ],
+        "EnabledByDefault": true,
+        "Name": "LCARS",
+        "Description": "LCARS window decoration, based on Carl by jomada",
+        "Id": "LCARS",
+        "Version": "1.0",
+        "License": "GPL_V3",
+        "X-KDE-PluginInfo-blur": false,
+        "X-KPackage-Dependencies": []
+    }
+}

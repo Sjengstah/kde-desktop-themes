@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "sjengstah"
+            },
+            {
+                "Name": "jomada (Carl)",
+                "Email": "gicalucejo@gmail.com"
+            }
+        ],
+        "Category": "",
+        "Description": "Dutch national football team (Oranje)–inspired Plasma Style, based on Carl by jomada",
+        "EnabledByDefault": true,
+        "Id": "ORANJE",
+        "License": "LGPL",
+        "Name": "ORANJE",
+        "Version": "1.0",
+        "Website": "https://seduccionlinux.wordpress.com"
+    },
+    "X-Plasma-API": "5.0"
+}

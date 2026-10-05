@@ -1,0 +1,256 @@
+#!/usr/bin/env bash
+# desktop-theme: install, switch and remove the themes of the KDE desktop themes pack.
+#
+#   desktop-theme list                    all themes; * = active, - = not installed
+#   desktop-theme status                  the active theme
+#   desktop-theme <theme>                 switch the whole desktop to <theme>
+#   desktop-theme setup <theme>           first time: REPLACE the panels on the primary screen
+#                                         with the theme's panels and widgets, then switch
+#   desktop-theme install <theme>|all     install or update a theme's parts (activates nothing)
+#   desktop-theme remove <theme>|all      remove a theme's parts (not the active one)
+#   desktop-theme sync                    follow the Global Theme picked in System Settings
+#                                         (runs by itself through desktop-theme-sync.path)
+#
+# A switch swaps: global theme (style, colours, window frame, splash), the widgets on every
+# panel and desktop (same widget IDs, so their settings and hotkeys stay), the wallpaper,
+# the Meta+G audio overlay, fastfetch and the GTK 4 colour block. Panels and icons stay.
+set -euo pipefail
+
+THEMES=(lcars rbr oranje feyenoord mvv maastricht starwars stargate)
+CONF="${XDG_CONFIG_HOME:-$HOME/.config}"
+DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
+BIN="$HOME/.local/bin"
+STATE="$CONF/desktop-theme"
+APPLETS="$CONF/plasma-org.kde.plasma.desktop-appletsrc"
+PACK="$DATA/desktop-themes"          # copy of the pack, made by install.sh
+mkdir -p "$STATE"
+
+usage() { sed -n '2,/^set -euo/{/^#/s/^# \{0,1\}//p}' "$0" | sed '$d'; }
+die() { echo "desktop-theme: $*" >&2; exit 1; }
+known() { [[ " ${THEMES[*]} " == *" $1 "* ]]; }
+installed() { [[ -f "$STATE/$1-fastfetch.jsonc" && -d "$DATA/plasma/look-and-feel/${1^^}" ]]; }
+current() { cat "$STATE/current" 2>/dev/null || echo none; }
+
+# ── install ──────────────────────────────────────────────────────────────────
+plasmoid() {
+    local src="$1" id
+    id=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["KPlugin"]["Id"])' "$src/metadata.json")
+    rm -rf "$DATA/plasma/plasmoids/$id"
+    kpackagetool6 -t Plasma/Applet -i "$src" >/dev/null
+}
+
+install_theme() {
+    local t="$1" T="${1^^}" P="$PACK/themes/$1" work S f
+    [[ -d "$P" ]] || die "$t: $P is missing (run the pack's install.sh first)"
+    echo "▌ installing $T"
+    work=$(mktemp -d)
+    cp -a "$P/projects" "$work/projects"
+    cp "$P/layout.json" "$work/layout.json"
+    python3 "$PACK/lib/detect-hardware.py" "$work" >/dev/null   # bake this machine's GPU/disks into the widgets
+    S="$work/projects"
+
+    bash "$S/$t-theme/install.sh" >/dev/null
+    (cd "$S/$t-control" && bash build.sh >/dev/null)
+    plasmoid "$S/$t-monitor/package"
+    plasmoid "$S/$t-control/control"
+    plasmoid "$S/$t-control/notify"
+    [[ -d "$S/$t-audio/plasmoid" ]] && plasmoid "$S/$t-audio/plasmoid"
+    bash "$S/$t-audio/install.sh" >/dev/null
+    if [[ -d "$S/$t-wallpaper" ]]; then
+        rm -rf "$DATA/plasma/wallpapers/org.sjengstah.${t}wallpaper"
+        kpackagetool6 -t Plasma/Wallpaper -i "$S/$t-wallpaper/package" >/dev/null
+    fi
+    mkdir -p "$DATA/fonts"
+    find "$S/$t-monitor" -name '*.ttf' -exec cp {} "$DATA/fonts/" \;
+
+    # The per-theme launcher stays out of the app menu; Meta+G goes through desktop-audio.
+    # If an older setup bound Meta+G to this launcher, keep it pointing at desktop-audio.
+    f="$DATA/applications/$t-audio.desktop"
+    if grep -qx "\[services\]\[$t-audio.desktop\]" "$CONF/kglobalshortcutsrc" 2>/dev/null; then
+        sed -i "s|^Exec=.*|Exec=$BIN/desktop-audio|" "$f"
+    fi
+    grep -q '^NoDisplay=' "$f" || echo "NoDisplay=true" >> "$f"
+
+    mkdir -p "$CONF/fish/functions" "$CONF/fastfetch"
+    for f in "$P"/fish/*.fish; do install -m644 "$f" "$CONF/fish/functions/"; done
+    # fastfetch: each theme's logo gets its own name so they don't overwrite each other.
+    cp "$P/fastfetch/config.jsonc" "$STATE/$t-fastfetch.jsonc"
+    for f in "$P"/fastfetch/*; do
+        [[ "$(basename "$f")" == config.jsonc ]] && continue
+        install -m644 "$f" "$CONF/fastfetch/$t-$(basename "$f")"
+        sed -i "s|~/.config/fastfetch/$(basename "$f")|~/.config/fastfetch/$t-$(basename "$f")|" "$STATE/$t-fastfetch.jsonc"
+    done
+    [[ -f "$STATE/$t-gtk4.css" ]] || cp "$P/gtk4-$t.css" "$STATE/$t-gtk4.css"
+    rm -rf "$work"
+}
+
+remove_theme() {
+    local t="$1" T="${1^^}" w
+    [[ "$t" == "$(current)" ]] && die "$t is active: switch to another theme first"
+    echo "▌ removing $T"
+    for w in monitor control notify audio; do
+        kpackagetool6 -t Plasma/Applet -r "org.sjengstah.$t$w" >/dev/null 2>&1 || true
+    done
+    kpackagetool6 -t Plasma/Wallpaper -r "org.sjengstah.${t}wallpaper" >/dev/null 2>&1 || true
+    rm -rf "$DATA/plasma/look-and-feel/$T" "$DATA/plasma/desktoptheme/$T" "$DATA/aurorae/themes/$T" \
+           "$DATA/wallpapers/$T" "$DATA/color-schemes/$T.colors" "$DATA/$t-audio" \
+           "$BIN/$t-audio" "$DATA/applications/$t-audio.desktop"
+    rm -f "$CONF/fish/functions/$t-"*.fish "$CONF/fastfetch/$t-"* "$STATE/$t-"*
+    rm -f "$HOME"/.cache/plasma_theme_"$T"*.kcache
+}
+
+# ── switch ───────────────────────────────────────────────────────────────────
+# apply <from> <to> [nolnf]: from may equal to (then only the non-widget parts are applied).
+apply() {
+    local from="$1" to="$2" nolnf="${3:-}" FROM="${1^^}" TO="${2^^}" wall plugin
+    exec 9>"$STATE/.lock"
+    flock 9
+
+    [[ "$from" != none && ! -f "$STATE/$from-fastfetch.jsonc" ]] && cp "$CONF/fastfetch/config.jsonc" "$STATE/$from-fastfetch.jsonc"
+    if [[ "$from" != none && "$from" != "$to" ]]; then
+        grep -m1 '^Image=' "$APPLETS" 2>/dev/null | cut -d= -f2- > "$STATE/$from-wallpaper" || true
+    fi
+    wall="file://$DATA/wallpapers/$TO"
+    [[ -s "$STATE/$to-wallpaper" ]] && wall=$(cat "$STATE/$to-wallpaper")
+
+    echo "Switching ${from} → ${to} …"
+    systemctl --user stop plasma-plasmashell
+
+    # Widgets: same applet IDs, only the plugin changes.
+    if [[ "$from" != none && "$from" != "$to" ]]; then
+        sed -i -E \
+            -e "s/^plugin=org\.sjengstah\.${from}(monitor|control|notify|audio)$/plugin=org.sjengstah.${to}\1/" \
+            -e "s/^${from}Popups=/${to}Popups=/" \
+            "$APPLETS"
+        sed -i -E "s/Activate ${FROM} /Activate ${TO} /" "$CONF/kglobalshortcutsrc" 2>/dev/null || true
+    fi
+    sed -i -E "s|^Image=.*|Image=${wall}|" "$APPLETS"
+
+    # Meta+G runs desktop-audio, which reads $STATE/current, so nothing to rewrite.
+    pkill -f -- "$DATA/[a-z]+-audio/Overlay.qml" 2>/dev/null || true
+
+    mkdir -p "$CONF/fastfetch"
+    cp "$STATE/$to-fastfetch.jsonc" "$CONF/fastfetch/config.jsonc"
+
+    # GTK 4: swap the colour block, keep everything else in gtk.css.
+    python3 - "$CONF/gtk-4.0/gtk.css" "$STATE" "$to" "${THEMES[@]}" <<'PY'
+import re, sys, pathlib
+css, state, to, themes = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2]), sys.argv[3], sys.argv[4:]
+text = css.read_text() if css.exists() else ""
+for t in themes:
+    pat = re.compile(r"\n*/\* %s-BEGIN \*/.*?/\* %s-END \*/\n?" % (t.upper(), t.upper()), re.S)
+    m = pat.search(text)
+    if m:
+        (state / f"{t}-gtk4.css").write_text(m.group(0).strip("\n") + "\n")
+        text = pat.sub("\n", text)
+saved = state / f"{to}-gtk4.css"
+if saved.exists():
+    text = text.rstrip("\n") + ("\n\n" if text.strip() else "") + saved.read_text()
+css.parent.mkdir(parents=True, exist_ok=True)
+css.write_text(text)
+PY
+
+    # Wallpaper type (picture or the theme's Live wallpaper), desktops only, not panels.
+    plugin=org.kde.image
+    [[ -d "$DATA/plasma/wallpapers/org.sjengstah.${to}wallpaper" ]] && plugin="org.sjengstah.${to}wallpaper"
+    python3 - "$APPLETS" "$STATE" "$from" "$to" "$plugin" <<'PY'
+import re, sys, pathlib
+applets, state, cur, tgt, default = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2]), *sys.argv[3:]
+lines = applets.read_text().split("\n")
+desk, sec = set(), None
+for l in lines:
+    m = re.fullmatch(r"\[Containments\]\[(\d+)\]", l)
+    sec = m.group(1) if m else (None if l.startswith("[") else sec)
+    if sec and l in ("plugin=org.kde.plasma.folder", "plugin=org.kde.desktop"):
+        desk.add(sec)
+seen = None
+for l in lines:
+    m = re.fullmatch(r"\[Containments\]\[(\d+)\]", l)
+    sec = m.group(1) if m else (None if l.startswith("[") else sec)
+    if sec in desk and l.startswith("wallpaperplugin=") and seen is None:
+        seen = l.split("=", 1)[1]
+if seen and cur not in ("none", tgt):
+    (state / f"{cur}-wallpaperplugin").write_text(seen)
+f = state / f"{tgt}-wallpaperplugin"
+want = f.read_text().strip() if f.exists() else default
+for i, l in enumerate(lines):
+    m = re.fullmatch(r"\[Containments\]\[(\d+)\]", l)
+    sec = m.group(1) if m else (None if l.startswith("[") else sec)
+    if sec in desk and l.startswith("wallpaperplugin="):
+        lines[i] = "wallpaperplugin=" + want
+applets.write_text("\n".join(lines))
+PY
+
+    echo "$to" > "$STATE/current"
+    systemctl --user start plasma-plasmashell
+    sleep 3
+    [[ -n "$nolnf" ]] || plasma-apply-lookandfeel -a "$TO" >/dev/null 2>&1 || true
+    echo "Done: $TO active."
+}
+
+# First time: build the theme's panels (and widgets) on the primary screen.
+setup() {
+    local t="$1" js
+    installed "$t" || die "$t is not installed: desktop-theme install $t"
+    js=$(python3 "$PACK/lib/make-layout.py" "$PACK/themes/$t/layout.json" "")
+    qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "$js" | sed 's/^/  /'
+    if [[ -d "$DATA/plasma/wallpapers/org.sjengstah.${t}wallpaper" ]]; then
+        read -r ptop pbottom < <(python3 -c '
+import json, sys
+panels = json.load(open(sys.argv[1])).get("panels", [])
+h = lambda loc: max([p.get("thickness", 0) for p in panels if p.get("location") == loc] or [0])
+print(h("top"), h("bottom"))' "$PACK/themes/$t/layout.json")
+        qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \
+            "desktops().forEach(function (d) { d.wallpaperPlugin = 'org.sjengstah.${t}wallpaper';
+             d.currentConfigGroup = ['Wallpaper', 'org.sjengstah.${t}wallpaper', 'General'];
+             d.writeConfig('PanelTop', $ptop); d.writeConfig('PanelBottom', $pbottom); });" >/dev/null
+    fi
+    sleep 2
+    apply "$(current)" "$t"
+}
+
+# ── main ─────────────────────────────────────────────────────────────────────
+targets() {   # expand "all" and check names
+    local t
+    if [[ "${1:-}" == all ]]; then printf '%s\n' "${THEMES[@]}"; return; fi
+    [[ $# -gt 0 ]] || die "name a theme: ${THEMES[*]}"
+    for t in "$@"; do known "$t" || die "unknown theme: $t"; echo "$t"; done
+}
+
+cmd="${1:-status}"; shift || true
+case "$cmd" in
+    -h|--help|help) usage ;;
+    status) echo "Current: $(current)" ;;
+    list)
+        for t in "${THEMES[@]}"; do
+            if [[ "$t" == "$(current)" ]]; then echo "* $t"
+            elif installed "$t"; then echo "  $t"
+            else echo "- $t (not installed)"; fi
+        done ;;
+    install)
+        ts=$(targets "$@") || exit 1
+        for t in $ts; do install_theme "$t"; done
+        fc-cache -f "$DATA/fonts" >/dev/null 2>&1 || true
+        kbuildsycoca6 >/dev/null 2>&1 || true
+        echo "Installed. Switch with: desktop-theme <theme>" ;;
+    remove)
+        ts=$(targets "$@") || exit 1
+        for t in $ts; do
+            if [[ "$t" == "$(current)" && "${1:-}" == all ]]; then echo "  keeping $t (active)"; continue; fi
+            installed "$t" && remove_theme "$t"
+        done ;;
+    setup)
+        [[ $# -eq 1 ]] && known "$1" || die "usage: desktop-theme setup <theme>"
+        setup "$1" ;;
+    sync)
+        lnf=$(kreadconfig6 --file kdeglobals --group KDE --key LookAndFeelPackage 2>/dev/null || true)
+        t="${lnf,,}"
+        if known "$t" && installed "$t" && [[ "$t" != "$(current)" ]]; then
+            apply "$(current)" "$t" nolnf
+        fi ;;
+    *)
+        known "$cmd" || { usage >&2; exit 1; }
+        installed "$cmd" || die "$cmd is not installed: desktop-theme install $cmd"
+        [[ "$cmd" == "$(current)" ]] && { echo "Already on $cmd."; exit 0; }
+        apply "$(current)" "$cmd" ;;
+esac

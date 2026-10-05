@@ -1,0 +1,59 @@
+// FEYENOORD fastfetch config (Feyenoord Rotterdam–inspired look). Palette matches the FEYENOORD theme.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": {
+      "1": "38;2;227;6;19",
+      "2": "38;2;201;205;214",
+      "3": "38;2;242;194;48",
+      "4": "38;2;245;245;247"
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 28 },
+    "color": { "keys": "38;2;227;6;19", "output": "38;2;245;245;247" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;227;6;19}▐██████{#38;2;90;90;104}██{#38;2;201;205;214}████ {#1;38;2;227;6;19}HAND IN HAND {#38;2;201;205;214}████{#38;2;227;6;19}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;230;232;238}▐█ MINUTE (DAY)",
+      "text": "echo $(( ($(date +%-H) * 60 + $(date +%-M)) * 90 / 1440 ))"
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;230;232;238}▐█ PLAYER (USER)",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;90;90;104}▐███ {#1;38;2;90;90;104}KIT {#0;38;2;90;90;104}███████████████████████▌" },
+    { "type": "os",       "key": "▐█ SHIRT (OS)" },
+    { "type": "kernel",   "key": "▐█ BOOTS (KERNEL)" },
+    { "type": "uptime",   "key": "▐█ MATCH TIME (UPTIME)" },
+    { "type": "packages", "key": "▐█ SQUAD (PACKAGES)" },
+    { "type": "shell",    "key": "▐█ ARMBAND (SHELL)" },
+    { "type": "de",       "key": "▐█ DE KUIP (DESKTOP)" },
+    { "type": "terminal", "key": "▐█ SCOREBOARD (TERMINAL)" },
+    "break",
+    { "type": "custom", "format": "{#38;2;242;194;48}▐███ {#1;38;2;242;194;48}SQUAD FITNESS {#0;38;2;242;194;48}██████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ MIDFIELD (CPU)", "temp": true },
+    { "type": "gpu",      "key": "▐█ ATTACK (GPU)" },
+    { "type": "memory",   "key": "▐█ STAMINA (MEMORY)" },
+    { "type": "swap",     "key": "▐█ BENCH (SWAP)" },
+    { "type": "disk",     "key": "▐█ KIT ROOM (STORAGE) {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ BIG SCREEN (DISPLAY)" },
+    { "type": "localip",  "key": "▐█ LEGION (NETWORK)" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;227;6;19}▐████{#38;2;245;245;247}████{#38;2;90;90;104}████{#38;2;201;205;214}████{#38;2;230;232;238}████{#38;2;242;194;48}████{#38;2;156;0;16}████{#38;2;227;6;19}████▌"
+    }
+  ]
+}

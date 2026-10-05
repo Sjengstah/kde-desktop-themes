@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MVV Audio
+Comment=Toggle the MVV audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

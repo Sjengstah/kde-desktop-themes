@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "sjengstah"
+            },
+            {
+                "Name": "jomada (Carl)",
+                "Email": "gicalucejo@gmail.com"
+            }
+        ],
+        "Category": "",
+        "Description": "Star Wars–inspired Plasma Style, based on Carl by jomada",
+        "EnabledByDefault": true,
+        "Id": "STARWARS",
+        "License": "LGPL",
+        "Name": "STARWARS",
+        "Version": "1.0",
+        "Website": "https://seduccionlinux.wordpress.com"
+    },
+    "X-Plasma-API": "5.0"
+}

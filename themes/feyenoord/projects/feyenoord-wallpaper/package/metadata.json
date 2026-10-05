@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Description": "Live FEYENOORD wallpaper: the match-night design with Feyenoord's next match, last result and league position",
+        "Icon": "preferences-desktop-wallpaper",
+        "Id": "org.sjengstah.feyenoordwallpaper",
+        "License": "GPL-3.0-or-later",
+        "Name": "FEYENOORD Live",
+        "Version": "1.0"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

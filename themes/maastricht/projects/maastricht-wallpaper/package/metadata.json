@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Description": "Live MAASTRICHT wallpaper: the city design with Maastricht's weather, sun times and a carnival countdown",
+        "Icon": "preferences-desktop-wallpaper",
+        "Id": "org.sjengstah.maastrichtwallpaper",
+        "License": "GPL-3.0-or-later",
+        "Name": "MAASTRICHT Live",
+        "Version": "1.0"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

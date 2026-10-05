@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [ { "Name": "sjengstah" } ],
+        "Category": "",
+        "Description": "Star Wars–inspired global theme: Plasma Style, colors, window decoration, wallpaper and splash screen",
+        "Id": "STARWARS",
+        "License": "GPL-2.0-or-later",
+        "Name": "STARWARS",
+        "Version": "1.0"
+    },
+    "X-Plasma-APIVersion": "2"
+}

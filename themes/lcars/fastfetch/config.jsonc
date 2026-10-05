@@ -1,0 +1,59 @@
+// LCARS fastfetch config. Palette matches ~/Projects/lcars-theme
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/planet.txt",
+    "color": {
+      "1": "38;2;255;153;0",    // planet: LCARS orange
+      "2": "38;2;153;153;255",  // orbit: LCARS lavender
+      "3": "38;2;255;204;153"   // moon: LCARS peach
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 24 },
+    "color": { "keys": "38;2;255;153;0", "output": "38;2;255;204;153" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;255;153;0}▐██████{#38;2;204;153;204}██{#38;2;153;153;255}████ {#1;38;2;255;153;0}LCARS ACCESS 4711 {#38;2;153;153;255}████{#38;2;255;153;0}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;153;204;255}▐█ STARDATE",
+      // same formula as the LCARS Monitor widget (Lcars.qml stardate())
+      "text": "y=$(date +%Y); awk -v y=$y -v n=$(date +%s) -v a=$(date -d $y-01-01 +%s) -v b=$(date -d $((y+1))-01-01 +%s) 'BEGIN{printf \"%.1f\", (y%100)*1000 + (n-a)/(b-a)*1000}'"
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;153;204;255}▐█ VESSEL",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;204;153;204}▐███ {#1;38;2;204;153;204}SHIP SYSTEMS {#0;38;2;204;153;204}████████████████████▌" },
+    { "type": "os",       "key": "▐█ VESSEL CLASS" },
+    { "type": "kernel",   "key": "▐█ CORE MATRIX" },
+    { "type": "uptime",   "key": "▐█ MISSION TIME" },
+    { "type": "packages", "key": "▐█ CARGO MANIFEST" },
+    { "type": "shell",    "key": "▐█ COMMAND INTERFACE" },
+    { "type": "de",       "key": "▐█ BRIDGE INTERFACE" },
+    { "type": "terminal", "key": "▐█ ACCESS TERMINAL" },
+    "break",
+    { "type": "custom", "format": "{#38;2;255;204;102}▐███ {#1;38;2;255;204;102}ENGINEERING {#0;38;2;255;204;102}█████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ WARP CORE", "temp": true },
+    { "type": "gpu",      "key": "▐█ SENSOR ARRAY" },
+    { "type": "memory",   "key": "▐█ MEMORY CORE" },
+    { "type": "swap",     "key": "▐█ RESERVE POWER" },
+    { "type": "disk",     "key": "▐█ CARGO BAY {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ VIEWSCREEN" },
+    { "type": "localip",  "key": "▐█ SUBSPACE LINK" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;255;153;0}▐████{#38;2;255;204;153}████{#38;2;204;153;204}████{#38;2;153;153;255}████{#38;2;153;204;255}████{#38;2;255;204;102}████{#38;2;204;102;102}████{#38;2;255;153;0}████▌"
+    }
+  ]
+}

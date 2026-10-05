@@ -1,0 +1,59 @@
+// STARGATE fastfetch config (Stargate SG-1–inspired look). Palette matches the STARGATE theme.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": {
+      "1": "38;2;242;163;58",
+      "2": "38;2;110;198;255",
+      "3": "38;2;255;210;122",
+      "4": "38;2;230;241;247"
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 28 },
+    "color": { "keys": "38;2;242;163;58", "output": "38;2;230;241;247" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;242;163;58}▐██████{#38;2;27;77;107}██{#38;2;110;198;255}████ {#1;38;2;242;163;58}CHEYENNE MOUNTAIN · LEVEL 28 {#38;2;110;198;255}████{#38;2;242;163;58}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;191;232;255}▐█ ZULU",
+      "text": "date -u +%H:%MZ"
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;191;232;255}▐█ OFFICER (USER)",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;27;77;107}▐███ {#1;38;2;27;77;107}SGC {#0;38;2;27;77;107}███████████████████████▌" },
+    { "type": "os",       "key": "▐█ BASE (OS)" },
+    { "type": "kernel",   "key": "▐█ CORE (KERNEL)" },
+    { "type": "uptime",   "key": "▐█ SINCE LAST DIAL (UPTIME)" },
+    { "type": "packages", "key": "▐█ SUPPLIES (PACKAGES)" },
+    { "type": "shell",    "key": "▐█ DHD (SHELL)" },
+    { "type": "de",       "key": "▐█ CONTROL ROOM (DESKTOP)" },
+    { "type": "terminal", "key": "▐█ DIAL TERMINAL (TERMINAL)" },
+    "break",
+    { "type": "custom", "format": "{#38;2;255;210;122}▐███ {#1;38;2;255;210;122}BASE SYSTEMS {#0;38;2;255;210;122}██████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ REACTOR (CPU)", "temp": true },
+    { "type": "gpu",      "key": "▐█ DIAL COMPUTER (GPU)" },
+    { "type": "memory",   "key": "▐█ DHD BUFFER (MEMORY)" },
+    { "type": "swap",     "key": "▐█ MALP (SWAP)" },
+    { "type": "disk",     "key": "▐█ ARCHIVE (STORAGE) {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ BRIEFING SCREEN (DISPLAY)" },
+    { "type": "localip",  "key": "▐█ SUBSPACE (NETWORK)" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;242;163;58}▐████{#38;2;230;241;247}████{#38;2;27;77;107}████{#38;2;110;198;255}████{#38;2;191;232;255}████{#38;2;255;210;122}████{#38;2;215;51;43}████{#38;2;242;163;58}████▌"
+    }
+  ]
+}

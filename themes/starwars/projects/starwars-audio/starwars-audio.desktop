@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=STARWARS Audio
+Comment=Toggle the STARWARS audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

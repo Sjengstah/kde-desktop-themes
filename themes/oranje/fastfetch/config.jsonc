@@ -1,0 +1,59 @@
+// ORANJE fastfetch config (Dutch national football team (Oranje)–inspired look). Palette matches the ORANJE theme.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": {
+      "1": "38;2;255;106;19",
+      "2": "38;2;127;156;224",
+      "3": "38;2;255;178;26",
+      "4": "38;2;255;243;232"
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 28 },
+    "color": { "keys": "38;2;255;106;19", "output": "38;2;255;243;232" }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{#38;2;255;106;19}▐██████{#38;2;33;70;139}██{#38;2;127;156;224}████ {#1;38;2;255;106;19}HUP HOLLAND HUP {#38;2;127;156;224}████{#38;2;255;106;19}███████▌"
+    },
+    {
+      "type": "command",
+      "key": "{#38;2;207;224;255}▐█ MINUTE (DAY)",
+      "text": "echo $(( ($(date +%-H) * 60 + $(date +%-M)) * 90 / 1440 ))"
+    },
+    {
+      "type": "title",
+      "key": "{#38;2;207;224;255}▐█ PLAYER (USER)",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    { "type": "custom", "format": "{#38;2;33;70;139}▐███ {#1;38;2;33;70;139}KIT {#0;38;2;33;70;139}███████████████████████▌" },
+    { "type": "os",       "key": "▐█ SHIRT (OS)" },
+    { "type": "kernel",   "key": "▐█ BOOTS (KERNEL)" },
+    { "type": "uptime",   "key": "▐█ MATCH TIME (UPTIME)" },
+    { "type": "packages", "key": "▐█ SQUAD (PACKAGES)" },
+    { "type": "shell",    "key": "▐█ ARMBAND (SHELL)" },
+    { "type": "de",       "key": "▐█ STADIUM (DESKTOP)" },
+    { "type": "terminal", "key": "▐█ SCOREBOARD (TERMINAL)" },
+    "break",
+    { "type": "custom", "format": "{#38;2;255;178;26}▐███ {#1;38;2;255;178;26}SQUAD FITNESS {#0;38;2;255;178;26}██████████████████████▌" },
+    { "type": "cpu",      "key": "▐█ MIDFIELD (CPU)", "temp": true },
+    { "type": "gpu",      "key": "▐█ ATTACK (GPU)" },
+    { "type": "memory",   "key": "▐█ STAMINA (MEMORY)" },
+    { "type": "swap",     "key": "▐█ BENCH (SWAP)" },
+    { "type": "disk",     "key": "▐█ KIT ROOM (STORAGE) {mountpoint}", "folders": "/" },
+    { "type": "display",  "key": "▐█ BIG SCREEN (DISPLAY)" },
+    { "type": "localip",  "key": "▐█ SUPPORTERS (NETWORK)" },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#38;2;255;106;19}▐████{#38;2;255;243;232}████{#38;2;33;70;139}████{#38;2;127;156;224}████{#38;2;207;224;255}████{#38;2;255;178;26}████{#38;2;174;28;40}████{#38;2;255;106;19}████▌"
+    }
+  ]
+}

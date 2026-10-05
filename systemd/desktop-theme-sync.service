@@ -1,0 +1,6 @@
+[Unit]
+Description=Switch widgets, wallpaper and fastfetch to the picked Global Theme (desktop-theme)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/desktop-theme sync

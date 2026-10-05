@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=ORANJE Audio
+Comment=Toggle the ORANJE audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;

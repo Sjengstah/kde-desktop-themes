@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=LCARS Audio
+Comment=Toggle the LCARS audio overlay
+Exec=@BIN@
+Icon=audio-volume-high
+Categories=AudioVideo;Audio;Mixer;
