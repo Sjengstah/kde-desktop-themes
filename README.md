@@ -12,6 +12,12 @@ colours, window frame, boot splash, a system monitor widget, a control center, a
 center with themed popups, a Meta+G audio overlay, a live wallpaper, a fastfetch greeting
 and the GTK 4 colours. Your panels and your icon theme stay as they are.
 
+Window titlebars are see-through (35%) and look the same in KDE, GTK 3 and
+GTK 4 apps: GTK headerbars get the theme's titlebar colour, transparency, title colours and
+window buttons. Not reachable from a theme: GTK headerbars can't be blurred, Electron apps
+(Discord, …) draw their own titlebar, and Chrome only matches with *Settings → Appearance →
+Use system title bar and borders* turned on (Firefox: *Customize toolbar → Title Bar*).
+
 | Theme | Look | Live wallpaper shows | Font |
 |---|---|---|---|
 | `lcars` | Star Trek LCARS–inspired: orange, lilac and blue rounded pills on black | (picture wallpaper) | Antonio |
@@ -129,7 +135,8 @@ desktop-theme remove feyenoord      # remove a theme you don't use
   right-click a panel → Add or Manage Widgets → search for the theme name.
 - **Switching:** `desktop-theme <theme>` swaps the global theme, every theme widget on every
   panel and desktop (same widget, new look: settings and hotkeys stay), the wallpaper, the
-  Meta+G overlay, fastfetch and the GTK 4 colours. Plasma restarts for a moment.
+  Meta+G overlay, fastfetch, the GTK 4 colours and the GTK 3/4 titlebars. Plasma restarts for a moment.
+  Already-open GTK apps pick up the new titlebars when you restart them.
 - **System Settings:** every theme also shows up in *Colors & Themes → Global Theme*. Picking
   one there switches the widgets, wallpaper and fastfetch too (a small systemd user unit,
   `desktop-theme-sync.path`, watches for it).
@@ -146,7 +153,7 @@ desktop-theme remove feyenoord      # remove a theme you don't use
 2. Run `./uninstall.sh` from the clone (deleted it? clone the repo again).
 
 It removes the themes, widgets, overlays, commands and the sync unit, and the GTK 4 colour
-blocks. Your panels, icons and fonts stay; settings backups stay in
+and GTK 3/4 titlebar blocks. Your panels, icons and fonts stay; settings backups stay in
 `~/.config/desktop-themes-backup-*`. Flatpak theme access: `flatpak override --user --reset`.
 
 ## What's in the pack
@@ -158,7 +165,7 @@ blocks. Your panels, icons and fonts stay; settings backups stay in
 | `bin/desktop-audio` | Meta+G target: opens the active theme's audio overlay |
 | `themes/<theme>/projects/` | Per theme: global theme, monitor, control + notification center, audio overlay, live wallpaper |
 | `themes/<theme>/` | Panel layout, fastfetch, fish helpers, GTK 4 colours, HOWTO |
-| `lib/` | Hardware detection (bakes your GPU, disks and CPU sensor into the monitor) and the panel layout script |
+| `lib/` | Hardware detection (bakes your GPU, disks and CPU sensor into the monitor), the panel layout script, and `glass-deco.py` (see-through window frames + matching GTK titlebars; `glass-deco.py svg <decoration.svg> 0.5` changes a frame's opacity) |
 | `extras/kde-audio-overlay/` | The Meta+G overlay with a plain Breeze look (not installed) |
 
 ## Credits and licences

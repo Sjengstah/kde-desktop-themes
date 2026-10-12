@@ -13,7 +13,8 @@
 #
 # A switch swaps: global theme (style, colours, window frame, splash), the widgets on every
 # panel and desktop (same widget IDs, so their settings and hotkeys stay), the wallpaper,
-# the Meta+G audio overlay, fastfetch and the GTK 4 colour block. Panels and icons stay.
+# the Meta+G audio overlay, fastfetch, the GTK 4 colour block and the GTK 3/4 titlebars
+# (see-through, matching the window frame). Panels and icons stay.
 set -euo pipefail
 
 THEMES=(lcars rbr oranje feyenoord mvv maastricht starwars stargate)
@@ -149,6 +150,9 @@ if saved.exists():
 css.parent.mkdir(parents=True, exist_ok=True)
 css.write_text(text)
 PY
+
+    # GTK 3/4 titlebars: same colour, transparency and title colours as the KWin decoration.
+    python3 "$PACK/lib/glass-deco.py" gtk "$DATA/aurorae/themes/$TO" "$TO" || true
 
     # Wallpaper type (picture or the theme's Live wallpaper), desktops only, not panels.
     plugin=org.kde.image

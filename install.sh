@@ -110,7 +110,7 @@ step "Backing up current settings"
 BACKUP="$CONF/desktop-themes-backup-$(date +%Y%m%d-%H%M%S)"
 run mkdir -p "$BACKUP"
 for f in kdeglobals kwinrc plasmarc ksplashrc kcminputrc plasmashellrc kglobalshortcutsrc \
-         plasma-org.kde.plasma.desktop-appletsrc plasmanotifyrc gtk-3.0/settings.ini gtk-4.0/gtk.css \
+         plasma-org.kde.plasma.desktop-appletsrc plasmanotifyrc gtk-3.0/settings.ini gtk-3.0/gtk.css gtk-4.0/gtk.css \
          fastfetch/config.jsonc; do
     if [[ -f "$CONF/$f" ]]; then run install -D -m600 "$CONF/$f" "$BACKUP/$f"; fi
 done

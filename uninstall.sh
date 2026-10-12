@@ -40,6 +40,9 @@ if css.exists():
     css.write_text(text)
 PY
 
+# GTK 3/4 titlebar blocks
+[[ -f "$DATA/desktop-themes/lib/glass-deco.py" ]] && python3 "$DATA/desktop-themes/lib/glass-deco.py" clear || true
+
 kwriteconfig6 --file kglobalshortcutsrc --group services --group desktop-audio.desktop --key _launch --delete 2>/dev/null || true
 rm -f "$DATA/applications/desktop-audio.desktop" "$BIN/desktop-theme" "$BIN/desktop-audio" \
       "$CONF/fish/completions/desktop-theme.fish" "$DATA/bash-completion/completions/desktop-theme"
