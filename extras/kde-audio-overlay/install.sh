@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
-# Install the audio overlay for the current user (no root needed).
+# Audio Overlay: installer
+#
+# What it does:
+#   Installs the audio overlay (a pop-up for volume and audio output) for the
+#   current user only. No root/sudo needed.
+#   1. Copies Overlay.qml to ~/.local/share/kde-audio-overlay/
+#   2. Installs the launcher script as ~/.local/bin/kde-audio-overlay
+#   3. Writes a menu entry (~/.local/share/applications/kde-audio-overlay.desktop) and refreshes
+#      KDE's menu cache (kbuildsycoca6), so it shows up in the app menu
+#   4. Checks whether the Qt 6 QML runtime and the KDE QML modules the overlay needs
+#      (layer-shell, Plasma volume, Kirigami) are installed; if not, it prints the
+#      package names to install (Fedora and Arch/CachyOS)
+#
+# How to run:  bash install.sh   (from this folder; running it again updates the files)
+# Afterwards:  give it a shortcut in System Settings > Keyboard > Shortcuts > Add New >
+#              Application > Audio Overlay
+# Undo:        bash uninstall.sh
 set -euo pipefail
 cd "$(dirname "$0")"
 

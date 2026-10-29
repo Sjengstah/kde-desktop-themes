@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
-# Toggle the MAASTRICHT audio overlay: opens it, or closes it when it's already open.
+# maastricht-audio: open or close the MAASTRICHT audio overlay
+#
+# What it does:
+#   A toggle, meant to sit under a keyboard shortcut.
+#   - Overlay already open? Then it closes it and stops.
+#   - Otherwise it starts ~/.local/share/maastricht-audio/Overlay.qml with the Qt 6 QML runtime.
+#     It tries qml6, qml-qt6 and the usual Qt paths, because the name differs per distro.
+#   - No QML runtime found: shows a desktop notification and exits with code 1.
+#   It changes nothing on the system.
+#
+# Installed by install.sh as ~/.local/bin/maastricht-audio.
+# Setting:  MAASTRICHT_AUDIO_DIR=/other/folder makes it look for Overlay.qml there instead.
 set -euo pipefail
 
 dir="${MAASTRICHT_AUDIO_DIR:-$HOME/.local/share/maastricht-audio}"

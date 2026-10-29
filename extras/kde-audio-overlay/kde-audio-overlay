@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
-# Toggle the KDE audio overlay: opens it, or closes it when it's already open.
+# kde-audio-overlay: open or close the audio overlay
+#
+# What it does:
+#   A toggle, meant to sit under a keyboard shortcut.
+#   - Overlay already open? Then it closes it and stops.
+#   - Otherwise it starts ~/.local/share/kde-audio-overlay/Overlay.qml with the Qt 6
+#     QML runtime, using KDE's look for the buttons and sliders. It tries qml6,
+#     qml-qt6 and the usual Qt paths, because the name differs per distro.
+#   - No QML runtime found: shows a desktop notification and exits with code 1.
+#   It changes nothing on the system.
+#
+# Installed by install.sh as ~/.local/bin/kde-audio-overlay.
+# Setting:  KDE_AUDIO_OVERLAY_DIR=/other/folder makes it look for Overlay.qml there.
 set -euo pipefail
 
 dir="${KDE_AUDIO_OVERLAY_DIR:-$HOME/.local/share/kde-audio-overlay}"

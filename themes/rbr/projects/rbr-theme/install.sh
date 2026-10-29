@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
-# Install the RBR global theme for the current user (no root needed).
+# RBR global theme: installer
+#
+# What it does:
+#   Installs the RBR look for KDE Plasma, for the current user only (no sudo):
+#   1. Removes an older copy of the RBR theme parts first, so files from an older
+#      version don't linger
+#   2. Copies the Plasma style (desktoptheme), the global theme (look-and-feel), the
+#      window decoration (aurorae), the colour scheme and the wallpapers to ~/.local/share/
+#   3. Installs the splash-screen font and refreshes the font cache
+#   4. Clears Plasma's cached copy of the theme, so the new files are really used
+#   It does NOT switch your desktop to RBR: at the end it prints the two commands
+#   that do that.
+#
+# How to run:  bash install.sh   (from this folder; running it again updates the theme)
+# Undo:        delete the RBR folders in ~/.local/share/plasma/desktoptheme,
+#              plasma/look-and-feel, aurorae/themes and wallpapers, and
+#              ~/.local/share/color-schemes/RBR.colors; pick another theme first.
 set -euo pipefail
 cd "$(dirname "$0")"
 data="${XDG_DATA_HOME:-$HOME/.local/share}"

@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
-# Install the MAASTRICHT audio overlay for the current user (no root needed).
+# MAASTRICHT Audio: installer
+#
+# What it does:
+#   Installs the MAASTRICHT audio overlay (a pop-up for volume and audio output, in the
+#   MAASTRICHT style) for the current user only. No root/sudo needed.
+#   1. Copies Overlay.qml and its fonts to ~/.local/share/maastricht-audio/
+#   2. Installs the launcher script as ~/.local/bin/maastricht-audio
+#   3. Writes a menu entry (~/.local/share/applications/maastricht-audio.desktop) and refreshes
+#      KDE's menu cache (kbuildsycoca6), so it shows up in the app menu
+#   4. Checks whether the Qt 6 QML runtime and the KDE QML modules the overlay needs
+#      (layer-shell, Plasma volume, Kirigami) are installed; if not, it prints the
+#      package names to install (Fedora and Arch/CachyOS)
+#
+# How to run:  bash install.sh   (from this folder; running it again updates the files)
+# Afterwards:  give it a shortcut in System Settings > Keyboard > Shortcuts > Add New >
+#              Application > MAASTRICHT Audio
+# Undo:        bash uninstall.sh
 set -euo pipefail
 cd "$(dirname "$0")"
 

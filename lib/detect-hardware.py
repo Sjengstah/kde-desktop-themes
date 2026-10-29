@@ -5,6 +5,12 @@ Usage: detect-hardware.py <theme dir> [--dry-run]
 Patches the default settings of the theme's System Monitor (GPU, CPU temperature
 sensor, disks) and the popup offsets of the Notification Center and audio overlay
 (from the captured top panel height). Prints what it found.
+
+When it runs: during a theme install (desktop-theme / setup.sh call it for the chosen
+theme), before the widgets are copied into Plasma. Safe to run again.
+What it changes: only files inside the given theme folder (the widgets' default
+settings in main.xml and the panel height in Overlay.qml); nothing system-wide, no sudo.
+With --dry-run it only prints what it detected and changes nothing.
 """
 import json
 import re

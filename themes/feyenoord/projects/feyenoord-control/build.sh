@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
+# feyenoord control widgets: build script
+#
+# What it does:
+#   The feyenoord theme has two Plasma widgets that share code: "control" (the panel
+#   control centre) and "notify" (notifications). This script:
+#   1. Copies the shared QML files and fonts from shared/ into both widgets
+#   2. Packs each widget into a feyenoord-control.plasmoid / feyenoord-notify.plasmoid file
+#      (a zip), next to this script
+#   3. Only with "install": installs both into Plasma for the current user, or
+#      upgrades them if they're already installed (kpackagetool6)
+#   No sudo. Widgets already on a panel only pick up changes after a Plasma restart
+#   (it prints the command).
+#
 # Copy the shared FEYENOORD components into both widgets and build the .plasmoid files.
 #   ./build.sh            build only
 #   ./build.sh install    build and install/upgrade both widgets for this user

@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+# RBR wallpaper: render the PNG images of the wallpaper package
+#
+# What it does:
+#   Runs make-wallpaper.py once per screen size and turns each SVG into a PNG in
+#   RBR/contents/images/<width>x<height>.png (12 common sizes by default, from
+#   1366x768 to 3840x2160), plus a small 400 px preview RBR/contents/screenshot.png.
+#   Plasma then picks the size that fits your screen. Only writes inside this folder.
+#
 # Render the RBR wallpaper package images (needs rsvg-convert from librsvg).
 # Extra sizes: ./render.sh 2880x1800 ...   Exact fit for one machine:
 #   python3 make-wallpaper.py W H SCALE TOP_PANEL BOTTOM_PANEL | rsvg-convert -o out.png

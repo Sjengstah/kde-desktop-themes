@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+# desktop-audio: open or close the audio overlay of whichever desktop theme is active
+#
+# What it does:
+#   Reads the active theme name from ~/.config/desktop-theme/current (written by
+#   desktop-theme) and runs that theme's overlay toggle, ~/.local/bin/<theme>-audio.
+#   No theme active (or its overlay isn't installed)? It shows a notification saying
+#   so and exits with code 1. Changes nothing itself.
+#   Why a separate script: the Meta+G shortcut always points here, so switching
+#   themes never needs a new shortcut (KWin would only notice after logging out).
+#
 # Meta+G target: toggle the audio overlay of the active desktop theme.
 # KWin caches a .desktop Exec line until re-login, so the shortcut always runs this
 # script and it picks <theme>-audio at press time.

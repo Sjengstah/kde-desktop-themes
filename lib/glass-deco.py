@@ -15,6 +15,13 @@ so GTK headerbars always follow the window frame. The window buttons come from t
 KDE's GTK integration (kde-gtk-config) renders from the active KWin decoration.
 Blocks are marked /* <THEME>-DECO-BEGIN */ … /* <THEME>-DECO-END */ in gtk-3.0/gtk.css
 and gtk-4.0/gtk.css; only one theme's block is kept.
+
+When it runs: "gtk" is called by desktop-theme when you switch themes, "clear" by
+uninstall.sh. "svg" is a tool for building a theme's decoration, run by hand.
+What it changes: "svg" edits the given decoration.svg in place; "gtk" and "clear" only
+edit the marked block in ~/.config/gtk-3.0/gtk.css and ~/.config/gtk-4.0/gtk.css (your
+own CSS outside that block is kept). Current user only, no sudo.
+Undo: glass-deco.py clear
 """
 import os
 import re

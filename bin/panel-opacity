@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+# panel-opacity: make the Plasma panels more or less see-through
+#
+# What it does:
+#   - Without a number: shows the current panel opacity.
+#   - With a number (10-100): rewrites the panel background image of the active
+#     Plasma Style's "translucent" variant in ~/.local/share/plasma/desktoptheme/,
+#     always starting from the solid original so values never stack up. Then it
+#     clears Plasma's theme cache and restarts the Plasma shell (the panels
+#     disappear for a second) so you see it right away.
+#   Only works for the Plasma Styles listed below; others are refused with a message.
+#   Current user only, no sudo. Undo: run it again with 100 (fully solid).
+#
 # Set the panel transparency of the active Plasma Style (Carl-translucent or ORANJE).
 #   panel-opacity        show the current value
 #   panel-opacity 50     panel background at 50% opacity (10-100)

@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
-"""Generate the LCARS wallpaper as SVG for a given resolution (render with rsvg-convert)."""
+"""Generate the LCARS wallpaper as an SVG image for any screen size.
+
+What it does:
+  Draws the wallpaper from scratch for the width and height you give: a black
+  starfield (fixed random seed, so it looks the same every time), soft nebula
+  glows, a planet rising in the lower right, and dimmed LCARS frame pieces with
+  labels in the corners (kept dim so windows and widgets stay the focus).
+  Sizes are relative to the screen height, so it fits any resolution.
+
+Usage:   python3 make-wallpaper.py WIDTH HEIGHT > out.svg
+To PNG:  python3 make-wallpaper.py 3440 1440 | rsvg-convert -o 3440x1440.png
+Writes the SVG to standard output only; it changes no files by itself.
+"""
+
 import math
 import random
 import sys
